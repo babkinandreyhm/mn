@@ -10,3 +10,5 @@ include 'autoload.php';
 use collect\Collector as CR;
 
 $collector = new CR();
+$a = $collector->getDate();
+var_dump($a);
