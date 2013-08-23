@@ -11,11 +11,6 @@ include '../autoload.php';
 
 class CollectorTest extends PHPUnit_Framework_TestCase
 {
-    public function testGetSum()
-    {
-        $c = new \collect\Collector();
-        $this->assertEquals(5, $c->getSum(2 ,3));
-    }
 
     public function testGetDataObject()
     {

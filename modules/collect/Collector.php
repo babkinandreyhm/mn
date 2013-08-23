@@ -128,9 +128,4 @@ class Collector
         }
         return $this->attributes;
     }
-
-    public function getSum($a, $b)
-    {
-        return $a + $b;
-    }
 }
