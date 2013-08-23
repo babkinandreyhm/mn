@@ -9,7 +9,6 @@
 //ini_set( 'default_charset', 'UTF-8' );
 date_default_timezone_set('Europe/Moscow');
 include 'autoload.php';
-use collect\Collector as CR;
 
-$collector = new CR();
-$collector->saveCurrencies();
+var_dump($_SERVER);
+var_dump(file_get_contents('php://input'));
