@@ -10,5 +10,5 @@ include 'autoload.php';
 use collect\Collector as CR;
 
 $collector = new CR();
-$a = $collector->getDate();
+$a = $collector->getCurrencies();
 var_dump($a);

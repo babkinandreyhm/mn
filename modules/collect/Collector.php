@@ -26,7 +26,9 @@ class Collector
             if(strpos($source, 'http://')!==false) {
                 $isUrl = true;
             }
-            $this->xmlObject = new \SimpleXMLElement($source, null, $isUrl);
+            //may be used both methods
+            //$this->xmlObject = new \SimpleXMLElement($source, null, $isUrl);
+            $this->xmlObject = simplexml_load_file($source);
         } catch (\Exception $e) {
             echo 'Unable to get data from XML';
         }

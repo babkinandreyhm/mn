@@ -39,12 +39,21 @@ $sql = "CREATE TABLE `money`.`updateHistory` (
                         `currency_date` DATE NOT NULL ,
                         `load_date` DATETIME NOT NULL ,
                         PRIMARY KEY (`id`),
-                        INDEX `CHAR` USING BTREE (`update_date` ASC) );";
+                        INDEX `CUR_DATE` (`currency_date` ASC) );";
 $sth = $dbh->prepare($sql);
 $sth->execute();
 
 //example for creating indexes and foreign keys
+/*$sql = "ALTER TABLE `money`.`currency`
+          ADD FOREIGN KEY `CHAR` (`charCode` ASC) ;";
+$sth = $dbh->prepare($sql);
+$sth->execute();*/
 $sql = "ALTER TABLE `money`.`currency`
-          ADD INDEX `CHAR` (`charCode` ASC) ;";
+          ADD CONSTRAINT `fk_currency_to_history`
+          FOREIGN KEY (`up_id`)
+          REFERENCES `money`.`updateHistory` (`id`)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE,
+        ADD INDEX `fk_currency_to_history` (`up_id` ASC) ;";
 $sth = $dbh->prepare($sql);
 $sth->execute();
