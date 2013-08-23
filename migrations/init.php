@@ -22,7 +22,7 @@ try {
 //create table currency
 $sql = "CREATE  TABLE `money`.`currency` (
                         `id` INT NOT NULL AUTO_INCREMENT ,
-                        `up_id` INT NOT NULL ,
+                        `upId` INT NOT NULL ,
                         `numCode` VARCHAR(255) NOT NULL ,
                         `charCode` VARCHAR(255) NOT NULL ,
                         `nominal` VARCHAR(255) NOT NULL ,
@@ -34,7 +34,7 @@ $sth = $dbh->prepare($sql);
 $sth->execute();
 
 //create table updateHistory
-$sql = "CREATE TABLE `money`.`updateHistory` (
+$sql = "CREATE TABLE `money`.`currHistory` (
                         `id` INT NOT NULL AUTO_INCREMENT ,
                         `currency_date` DATE NOT NULL ,
                         `load_date` DATETIME NOT NULL ,
@@ -50,10 +50,10 @@ $sth = $dbh->prepare($sql);
 $sth->execute();*/
 $sql = "ALTER TABLE `money`.`currency`
           ADD CONSTRAINT `fk_currency_to_history`
-          FOREIGN KEY (`up_id`)
-          REFERENCES `money`.`updateHistory` (`id`)
+          FOREIGN KEY (`upId`)
+          REFERENCES `money`.`currHistory` (`id`)
           ON DELETE CASCADE
           ON UPDATE CASCADE,
-        ADD INDEX `fk_currency_to_history` (`up_id` ASC) ;";
+        ADD INDEX `fk_currency_to_history` (`upId` ASC) ;";
 $sth = $dbh->prepare($sql);
 $sth->execute();

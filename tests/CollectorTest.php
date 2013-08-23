@@ -29,7 +29,7 @@ class CollectorTest extends PHPUnit_Framework_TestCase
     public function testGetDate()
     {
         $c = new \collect\Collector();
-        $this->assertEquals('23.08.2013', $c->getDate());
+        $this->assertEquals('24.08.2013', $c->getDate());
     }
 
     //this is a example test for protected methods
