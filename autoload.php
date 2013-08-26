@@ -7,5 +7,5 @@
  * To change this template use File | Settings | File Templates.
  */
 spl_autoload_register(function ($class) {
-    include 'modules/' . str_replace('\\', '/', $class) . '.php';
+    include '/home/andreybabkin/hosts/hm/modules/' . str_replace('\\', '/', $class) . '.php';
 });

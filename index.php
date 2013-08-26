@@ -9,6 +9,8 @@
 //ini_set( 'default_charset', 'UTF-8' );
 date_default_timezone_set('Europe/Moscow');
 include 'autoload.php';
+use api\Api as API;
 
-var_dump($_SERVER);
-var_dump(file_get_contents('php://input'));
+$api = new API;
+
+var_dump($api->v1());

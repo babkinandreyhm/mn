@@ -14,24 +14,29 @@ class Db
     const USER = 'root';
     const PASS = '';
 
-    protected $dbh;
+    protected static $dbh;
+    private static $instance = null;
 
-    public function __construct()
+    public static function getConnection()
+    {
+        if (!self::$instance)
+        {
+            self::$instance = new self();
+        }
+        return self::$dbh;
+    }
+
+    private function __clone()
+    {
+
+    }
+
+    private function __construct()
     {
         try {
-            $this->dbh = new \PDO(self::DSN, self::USER, self::PASS);
+            self::$dbh = new \PDO(self::DSN, self::USER, self::PASS);
         } catch (\PDOException $e) {
             echo 'Подключение не удалось: ' . $e->getMessage();
         }
-    }
-
-    public function prepare($sql)
-    {
-        $this->dbh->prepare($sql);
-    }
-
-    public function execute()
-    {
-
     }
 }

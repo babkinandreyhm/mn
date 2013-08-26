@@ -6,18 +6,9 @@
  * Time: 16:07
  * To change this template use File | Settings | File Templates.
  */
-
-const DSN = 'mysql:dbname=money;host=127.0.0.1';
-const USER = 'root';
-const PASS = '';
-
-//init db connection
-try {
-    $dbh = new PDO(DSN, USER, PASS);
-    echo 'rdy' . PHP_EOL;
-} catch (PDOException $e) {
-    echo 'Подключение не удалось: ' . $e->getMessage();
-}
+include '/home/andreybabkin/hosts/hm/autoload.php';
+use db\Db as DB;
+$dbh = DB::getConnection();
 
 //create table currency
 $sql = "CREATE  TABLE `money`.`currency` (
